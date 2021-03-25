@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
 import { Inject } from '@angular/core';
-import { IApiServiceProvider } from './api-services-providers/i-api.service-provider';
+import { IApiServiceProvider } from '../api-services-providers/i-api.service-provider';
 
 //tu peux etendre une classe mere autant de fois que tu veux, en utilisant zero, un (T) ou plusieurs templates (T, K, ....)
 export class BusinessSubscriptionService<T, K> {

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PriceListService } from './services/pricelist.service';
+import { PriceListService } from './services/business-services/pricelist.service';
 import { MockJsonApiServiceProvider } from './services/api-services-providers/mock-json-api.service-provider';
 
 @NgModule({

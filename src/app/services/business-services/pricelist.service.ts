@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { BusinessSubscriptionService as SubscriptionBusinessService } from './subscription-business-service';
-import { Brand } from '../models/brand';
-import { PriceList } from '../models/pricelist';
+import { Brand } from '../../models/brand';
+import { PriceList } from '../../models/pricelist';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
