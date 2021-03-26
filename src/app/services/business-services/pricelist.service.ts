@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { BusinessSubscriptionService as SubscriptionBusinessService } from './subscription-business-service';
 import { Brand } from '../../models/brand';
@@ -34,9 +34,14 @@ export class PriceListService extends SubscriptionBusinessService<PriceList, Bra
   }
 
   public getAll(): Observable<Array<PriceList>> {
+    console.debug('getAll');
     let params = new Map<string, string>();
     return this._myAppApiServiceProvider.getAllPriceList().pipe(tap(( pricesLists: Array<PriceList>) => {
-      super.subscription.next(pricesLists);
+      console.debug('getAllReceived !');
+      console.debug(super.subscription);
+      if (super.subscription) {
+        super.subscription.next(pricesLists);
+      }
     }))
   }
 

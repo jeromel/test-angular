@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { PriceList } from "../../models/pricelist";
 import { HttpService } from "../common-services/http.service";
 import { IApiServiceProvider } from "./i-api.service-provider";
@@ -17,7 +17,9 @@ export class MockJsonApiServiceProvider implements IApiServiceProvider {
     public getAllPriceList(): Observable<PriceList[]> {
         let params: Map<string, string> =  new Map<string, string>();
         
-        return this._httpService.getObject<Array<PriceList>>('assets/api/pricelist/get.json', params);
+        console.debug('getAllPriceList');
+        //return this._httpService.getObject<Array<PriceList>>('assets/api/pricelist/get.json', params);
+        return of( [ new PriceList(), new PriceList, new PriceList() ]);
     }
 
     public getPriceListById(id: number): Observable<PriceList> {

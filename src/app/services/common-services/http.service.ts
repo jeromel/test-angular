@@ -8,8 +8,8 @@ import { catchError } from "rxjs/operators";
 export class HttpService {
 
   constructor(protected http: HttpClient,
-    @Inject('BASE_URL') public baseURL: string,
-    protected router: Router) { }
+    //protected router: Router
+    ) { }
 
   public httpClient(): HttpClient {
     return this.http;
@@ -28,7 +28,7 @@ export class HttpService {
 
     return this.http.get(path, { headers: headers, params: params }).pipe(catchError(err => {
       if (401 == err.status) {
-        this.router.navigateByUrl('/login');
+        //this.router.navigateByUrl('/login');
         return EMPTY;
       } else {
         return throwError(err);
@@ -50,7 +50,7 @@ export class HttpService {
     return this.http.get<T>(path, { headers: headers, params: params }).pipe(
       catchError(err => {
         if (401 == err.status) {
-          this.router.navigateByUrl('/login');
+          //this.router.navigateByUrl('/login');
           return EMPTY;
         } else {
           return throwError(err);
@@ -73,7 +73,7 @@ export class HttpService {
 
     return this.http.post<T>(path, postBody, { headers: headers }).pipe(catchError(err => {
       if (401 == err.status) {
-        this.router.navigateByUrl('/login');
+        //this.router.navigateByUrl('/login');
         return EMPTY;
       } else {
         return throwError(err);
@@ -94,7 +94,7 @@ export class HttpService {
 
     return this.http.patch<Response>(path, patchBody, { headers: headers }).pipe(catchError(err => {
       if (401 == err.status) {
-        this.router.navigateByUrl('/login');
+        //this.router.navigateByUrl('/login');
         return EMPTY;
       } else {
         return throwError(err);
@@ -109,7 +109,7 @@ export class HttpService {
 
     return this.http.post(path, postBody, { headers: headers, observe: 'response', responseType: 'blob' }).pipe(catchError(err => {
       if (401 == err.status) {
-        this.router.navigateByUrl('/login');
+        //this.router.navigateByUrl('/login');
         return EMPTY;
       } else {
         return throwError(err);
