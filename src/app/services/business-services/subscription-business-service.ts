@@ -12,8 +12,6 @@ export class BusinessSubscriptionService<T, K> {
   public filteredValues: K[] = [];
 
   constructor(
-    @Inject('MyAppApiServiceProvider') protected _myAppApiService: IApiServiceProvider,
-
   ) {
     this.values$.subscribe((val: Array<T>) => {
       this.values = Object.assign(val);
