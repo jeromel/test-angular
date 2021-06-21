@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 import { GroupProduct } from './models/GroupProduct';
 import { ICommerceLineItem } from './models/i-commerce-line-items';
 import { Product } from './models/product';
@@ -11,13 +13,30 @@ import { PriceListService } from './services/business-services/pricelist.service
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'test-angular';
 
   constructor(private _priceListService: PriceListService) 
   {
     
   }
+  ngOnInit(): void {
+    this._priceListService.getAll().pipe(takeUntil(this.unsubscribe)).subscribe(x => {
+      // traiter les donnees recues
+    });
+
+    this._priceListService.getAll().pipe(take(1)).subscribe(x => {
+      // traiter les donnees recues
+    });
+  }
+
+  private unsubscribe: Subject<void> = new Subject();
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+
 
   public onClick(): void {
     let arr: Array<ICommerceLineItem> = [];
